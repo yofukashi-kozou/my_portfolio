@@ -1,0 +1,33 @@
+
+<%= render 'layouts/header' %>
+  <div class="login">
+  <h1 class ="login-title">ログイン</h1>
+    <div class="login_form">
+      <%= form_with(url: login_path, scope: :session) do |f| %>
+
+        <div class="form_box ">
+        <div class="form_label">
+          <label>メールアドレス</label><br>
+        </div>
+        <%= f.email_field :email, class: 'form-underline' %>
+      </div>
+
+      <div class="form_box">
+        <div class="form_label">
+          <label>パスワード</label><br>
+        </div>
+        <%= f.password_field :password,  class: 'form-underline' %>
+      </div>
+
+      <div class="form_box">
+        <%= f.submit "ログインする", class: "button_blue blue_button_font" %>
+      </div>
+
+      <div class="form_box">
+        <%= f.submit "新規登録する", class: "button_blue blue_button_font" %>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+<%= render 'layouts/footer' %>

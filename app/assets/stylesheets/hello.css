@@ -1,0 +1,124 @@
+/* @import "bootstrap-sprockets"; */
+/* @import "bootstrap"; */
+
+.header{
+  display: flex;
+  width: 100%;
+  height: 120px;
+  /* padding: 0px 40px; */
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  background: var(--primary-color, #1B5678);
+}
+
+.login{
+  height:864px;
+  width: 100%;
+}
+
+.login-title{
+  color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Roboto;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 133.4%; /* 48.024px */
+  padding-top: 50px;
+}
+
+
+.login_form{
+  margin:0 auto;
+  width: 480px;
+}
+
+.button_blue{
+  padding: 16px 80px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: var(--primary-color, #1B5678);
+}
+
+.blue_button_font{
+  color: #FFF;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.form_box{
+text-align: center;
+margin-top: 60px;
+height: 48px;
+
+}
+
+
+.form_label{
+  text-align: left;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
+  width: 480px;
+}
+
+.form-underline{
+  border: none;
+  border-bottom: 1px solid black;
+  width: 480px;
+  margin-bottom: 30px;
+}
+
+
+.logo{
+  margin-left:40px;
+}
+
+.logo a{
+  color: #FFF;
+  font-family: Roboto;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration:none;
+}
+
+.logout_button{
+  margin-right:40px;
+
+}
+
+.logout_button button{
+  display: flex;
+  padding: 16px 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+background: var(--white, #FFF);
+}
+
+footer{
+  width: 100%;
+  height: 40px;
+  background: var(--primary-color, #1B5678);
+  position: sticky;
+}
+
+footer p{
+  text-align: center;
+  color: #FFF;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  margin-bottom: 0;
+}
+
+.footer_logo{
+  margin: 0 auto;
+}
