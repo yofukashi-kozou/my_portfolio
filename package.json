@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@hotwired/turbo": "^7.3.0",
     "@rails/webpacker": "5.4.4",
     "jquery": "^3.7.1",
     "turbolinks": "^5.2.0",

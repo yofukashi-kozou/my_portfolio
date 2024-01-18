@@ -1,6 +1,6 @@
 
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('turbolinks:load', function() {
     var deleteBtns = document.getElementsByClassName('delete-btn');
     var modal = document.getElementById('confirmation-modal');
     var confirmYesBtn = document.getElementById('confirm-yes');
@@ -41,12 +41,13 @@
 
 // 更新
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('turbolinks:load', function() {
     var updateBtns = document.getElementsByClassName('update-btn');
     var modal = document.getElementById('confirmation-modal-update');
     var confirmYesBtn = document.getElementById('confirm-yes');
 
     console.log("通った");
+    alert('turbolinks:load event fired');
 
      // データ属性からURLを取得
     var itemsUpdateUrl = document.getElementById('confirmation-modal-update').dataset.itemsUpdateUrl;
