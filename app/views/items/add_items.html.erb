@@ -1,0 +1,42 @@
+<% content_for :js do %>
+  <%= javascript_import_module_tag "modal_add" %>
+<% end %>
+
+<%= render 'layouts/header' %>
+
+<div class="edit-flame">
+  <h1><%=  @category.name %>に項目を追加</h1>
+  <%= form_for @item do |form| %>
+
+    <div class="edit-box">
+      <div class="edit-self-introduction">
+        <label>項目名</label>
+        <%= form.text_area :name, class: 'add-items-form' %>
+      </div>
+      <div class="add-img-box">
+        <label>学習時間</label>
+        <%= form.number_field :learning_time, min: 0, class: '' %>
+
+        <%= form.hidden_field :categories_id, value: @category.id %>
+        <%= form.hidden_field :user_id, value: @user.id %>
+      </div>
+      <div class="edit-confirm">
+        <%= form.submit '追加する', class: "edit-confirm-button create-btn" %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div id='confirmation-modal-add' class='modal_add' data-items-create-url='<%= items_create_path %>'>
+    <div class="modal-content">
+      <p><%= @category.name %>に<%= @item.name  %>の<%= @item.learning_time %>で追加しました！</p>
+
+      <div class="modal-buttons">
+        <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", items_create_path, remote: true %></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<%= render 'layouts/footer' %>
+<%= items_create_path %>

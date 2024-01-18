@@ -8,9 +8,13 @@
 
     <%= stylesheet_link_tag "hello", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= yield(:js) %>
+
+    
   </head>
 
   <body>
     <%= yield %>
+
   </body>
 </html>

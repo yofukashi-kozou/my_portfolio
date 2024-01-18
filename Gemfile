@@ -11,9 +11,14 @@ gem "turbo-rails",     "1.4.0"
 gem "stimulus-rails",  "1.2.1"
 gem "jbuilder",        "2.11.5"
 gem "puma",            "5.6.5"
-gem "bootsnap",        "1.16.0", require: false
+gem "bootsnap",        "1.16.0"
 gem "sqlite3",         "1.6.1"
 gem "bootstrap-sass",  "3.4.1"
+gem 'image_processing', '~> 1.2'
+gem 'sass-rails', '>= 3.2'
+gem 'turbolinks', '~> 5.2'
+gem 'webpacker', '~> 5.4.4'
+
 
 group :development, :test do
   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]

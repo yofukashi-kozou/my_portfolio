@@ -1,3 +1,27 @@
 <%= render 'layouts/header' %>
-<h1>Sessions#new</h1>
-<p>ログイン成功</p>
+
+<div class="user-info">
+  <div class="user-info-flame">
+      <div class="user-avatar">
+      <%= image_tag(@user.avatar, class:"user-avatar") %>
+      </div>
+      <div class="user-self-introduction">
+        <h1>自己紹介</h1>
+        <p><%= @user.introduction %></p>
+        <%= link_to "自己紹介を編集する", edit_user_path ,class:"user-self-introduction-btn"%>
+      </div>
+  </div>
+  <p class="user-name"><%= @user.name %></p>
+
+  <div class="study-chart-frame">
+  <div class="study-chart-box">
+    <h1>学習チャート</h1>
+  </div>
+  <%= link_to "編集する", skill_edit_user_path(@user) ,class: "user-self-introduction-btn" %>
+
+</div>
+</div>
+
+
+
+<%= render 'layouts/footer' %>
