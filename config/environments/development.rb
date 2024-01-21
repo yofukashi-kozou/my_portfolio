@@ -17,6 +17,9 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
+  # ログのレベルを :debug に設定
+  config.log_level = :debug
+
   # Add the following line to disable forgery_protection_origin_check
   config.action_controller.forgery_protection_origin_check = false
 

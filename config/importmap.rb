@@ -2,4 +2,4 @@
 pin "@hotwired/turbo-rails", to: "turbo.js"
 pin "application", preload: true
 pin "modal"
-pin "modal_add"
+pin "select"

@@ -5,28 +5,68 @@ class ItemsController < ApplicationController
       @item = Item.new
     end
 
-    def skill_edit
 
-        # @user = User.find(params[:id])
-        # user_id=@user.id
+    
+    def update_selected_day
+        puts "Reached update_selected_day method"  # この行を追加
+        selected_day = params[:selectedDay] # JavaScriptから送られたデータを取得
+        selected_id = params[:selectedid] 
+        selected_no = params[:selectedno] 
+        Rails.logger.debug "Selected Day7: #{selected_day.inspect}"
+        Rails.logger.debug "Selected Id7: #{selected_id.inspect}"
+        Rails.logger.debug "Selected No7: #{selected_no.inspect}"
+      
+        user_id = params[:selectedid]
+        @item = Item.find_by(id: params[:id])
+        @user = User.find(params[:id])
+        @no = 3
+      
+        @selected_day = selected_day
+        Rails.logger.debug "Selected Day3: #{@selected_day.inspect}"
+      
+        # すでに初期化されている場合は再初期化しないようにする
+        @today ||= Date.today
+        @last_month_day ||= Date.today.last_month
+        @two_months_ago_day ||= Date.today.months_since(-2)
+      
+        # 適切なデータを取得する処理をここに追加
+        # @item =  Item.where(user_id: @user.id ,created_at:  @selected_day.in_time_zone.all_month)
+      end
+
+    def skill_edit
+        selected_day = params[:selectedDay] # JavaScriptから送られたデータを取得
+        selected_id = params[:selectedid] 
+        selected_no = params[:selectedno] 
+
+        @selected_day = selected_day
+
+        @no=selected_no
+
         @category = Category.all
         user_id = params[:user_id]
         @item= Item.find_by(id: params[:id])
         @user = User.find(params[:id])
+        @today =Date.today
+        @last_month_day =Date.today.last_month
+        @two_months_ago_day =Date.today.months_since(-2)
+
+        @selected_day = params.fetch(:selected_day, @today)
+
+
+
         @this_month = Date.today.month
         @last_month = Date.today.last_month.month
         @two_months_ago = Date.today.months_since(-2).month
-        # @item = Item.where(user_id: user_id)
-        # @user = User.where(user_id: user_id)
-
-
+ 
         # if User.find_by(id: params[:id])  == nil
         #     user_id = @item.user_id
         #     @user = User.find(user_id)
         #   else
         #     @user = User.find(params[:id])
         # end
+
     end
+    
 
 
     
@@ -39,12 +79,14 @@ class ItemsController < ApplicationController
     end
 
     def destroy
+
         @item = Item.find(params[:id])
         user_id = @item.user_id 
         @item.destroy
         flash[:success] = "deleted"
         puts "Destroy action successfully executed!" 
-        redirect_to after_delete_url(@item.user_id), status: :see_other
+        debugger
+        redirect_to after_delete_path, status: :see_other
     end
 
     def update
@@ -54,6 +96,7 @@ class ItemsController < ApplicationController
         if @item.update(item_params)
         flash[:success] = " updated"
         # debugger
+        puts "Params: #{params.inspect}"
         redirect_to  after_delete_url(@item.user_id)
         else
         puts @item.errors.full_messages
