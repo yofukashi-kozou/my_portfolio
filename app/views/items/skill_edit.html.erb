@@ -1,7 +1,10 @@
 <% content_for :js do %>
   <%= javascript_import_module_tag "modal" %>
   <%= javascript_import_module_tag "select" %>
+  <%= javascript_import_module_tag "turbo" %>
 <% end %>
+
+
 
 <%= render 'layouts/header' %>
 
@@ -17,9 +20,7 @@
   </div>
 
   
-  <p>選んだ月</p>
-  <%= @selected_day %>
-  <%= @no %>
+ 
 
   <div class="category-box">
     <div class="category-title">

@@ -6,6 +6,8 @@ class ItemsController < ApplicationController
     end
 
 
+
+
     
     def update_selected_day
         puts "Reached update_selected_day method"  # この行を追加
@@ -19,9 +21,14 @@ class ItemsController < ApplicationController
         user_id = params[:selectedid]
         @item = Item.find_by(id: params[:id])
         @user = User.find(params[:id])
-        @no = 3
+        @no = selected_no
       
-        @selected_day = selected_day
+        if  selected_day == nil
+            @selected_day =   @today
+            else 
+                @selected_day =  selected_day
+            end
+
         Rails.logger.debug "Selected Day3: #{@selected_day.inspect}"
       
         # すでに初期化されている場合は再初期化しないようにする
@@ -31,16 +38,25 @@ class ItemsController < ApplicationController
       
         # 適切なデータを取得する処理をここに追加
         # @item =  Item.where(user_id: @user.id ,created_at:  @selected_day.in_time_zone.all_month)
+        # redirect_to skill_edit_user_path(selected_day: selected_day, selected_no:  selected_no)
+        respond_to do |format|
+            format.json { render json: { selected_day: selected_day, selected_no: selected_no } }
+          end
+          
       end
 
     def skill_edit
         selected_day = params[:selectedDay] # JavaScriptから送られたデータを取得
         selected_id = params[:selectedid] 
         selected_no = params[:selectedno] 
-
-        @selected_day = selected_day
+        Rails.logger.debug "Selected Day1: #{selected_day.inspect}"
+        Rails.logger.debug "Selected Id1: #{selected_id.inspect}"
+        Rails.logger.debug "Selected No1: #{selected_no.inspect}"
 
         @no=selected_no
+
+        Rails.logger.debug "Selected user: #{@user.inspect}"
+        Rails.logger.debug "Selected No2: #{@no.inspect}"
 
         @category = Category.all
         user_id = params[:user_id]
@@ -50,13 +66,17 @@ class ItemsController < ApplicationController
         @last_month_day =Date.today.last_month
         @two_months_ago_day =Date.today.months_since(-2)
 
-        @selected_day = params.fetch(:selected_day, @today)
-
-
+        # @selected_day = params.fetch(:selected_day, @today)
+        if  selected_day == nil
+        @selected_day =   @today
+        else 
+            @selected_day =  selected_day
+        end
 
         @this_month = Date.today.month
         @last_month = Date.today.last_month.month
         @two_months_ago = Date.today.months_since(-2).month
+
  
         # if User.find_by(id: params[:id])  == nil
         #     user_id = @item.user_id
@@ -85,7 +105,6 @@ class ItemsController < ApplicationController
         @item.destroy
         flash[:success] = "deleted"
         puts "Destroy action successfully executed!" 
-        debugger
         redirect_to after_delete_path, status: :see_other
     end
 
