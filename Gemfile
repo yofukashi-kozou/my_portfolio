@@ -19,6 +19,7 @@ gem 'sass-rails', '>= 3.2'
 gem 'turbolinks', '~> 5.2'
 gem 'webpacker', '~> 5.4.4'
 
+  
 
 
 group :development, :test do
@@ -42,7 +43,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '1.1.4'
+  gem 'pg'
 end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
