@@ -22,7 +22,6 @@ test:
 
 production:
   <<: *default
-  database: funatsusouhei
   adapter: postgresql
   encoding: unicode
   url: <%= ENV['DATABASE_URL'] %>
