@@ -22,6 +22,7 @@ test:
 
 production:
   <<: *default
+  database: my_port
   adapter: postgresql
   encoding: unicode
   url: <%= ENV['DATABASE_URL'] %>
