@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root "hello#index"
   get    "/login",   to: "sessions#new"
+  get    "/users/new",   to: "users#new"
   post   "/login",   to: "sessions#create"
   delete '/items/:id' , to: 'items#destroy' ,as: 'items_delete'
   get '/items/:id/items_create' , to: 'items#create' ,as: 'items_create'
