@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
 
         @category = Category.all
         user_id = params[:user_id]
-        @item= Item.find_by(id: params[:id])
+        # @item= Item.find_by(id: params[:id])
         @user = User.find(params[:id])
         @today =Date.today
         @last_month_day =Date.today.last_month
@@ -92,15 +92,16 @@ class ItemsController < ApplicationController
     
     def add_items
         @item = Item.new
-        @category = Category.find_by!(params[:categories_id])
+        # @category = Category.find_by!(params[:categories_id])
+        @category = Category.find(params[:categories_id])
         user_id = Item.find_by(id: params[:id])
         @user = User.find(params[:id])
 
     end
 
     def destroy
-
         @item = Item.find(params[:id])
+        debugger
         user_id = @item.user_id 
         @item.destroy
         flash[:success] = "deleted"

@@ -12,3 +12,7 @@ User.create!(id:2,
              password_confirmation: "password",
              img_path: "default.img" ,
              introduction: "testtesttesttesttesttesttesttesttesttesttest")
+
+ Category.create!(categories_id:1,name:'バックエンド')   
+Category.create!(categories_id:2,name:'フロントエンド')  
+Category.create!(categories_id:3,name:'インフラ')   

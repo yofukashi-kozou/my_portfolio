@@ -25,7 +25,7 @@
   <div class="category-box">
     <div class="category-title">
       <h1><p>バックエンド</p></h1>
-      <%= link_to "項目を追加する", add_items_path(@user), class:"add-items-button" %>
+      <%= link_to "項目を追加する", add_items_path(@user,categories_id: 1), class:"add-items-button" %>
     </div>
     
     <table>
@@ -38,7 +38,7 @@
 
       <% Item.where(categories_id: 1,created_at:  @selected_day.in_time_zone.all_month).each do |p| %>
         <tr>
-          <td><%= p.name %><%= p.created_at.strftime("%m月") %></td>
+          <td><%= p.name %><%= p.id %></td>
 
           <%= form_with(model: p, local: true) do |f| %>
             <td><%= f.number_field :learning_time, min: 0, value: p.learning_time, class: '' %></td>
@@ -73,9 +73,58 @@
 
 
   <div class="category-box">
+    <div class="category-title">
+      <h1><p>フロントエンド</p></h1>
+      <%= link_to "項目を追加する", add_items_path(@user,categories_id: 2), class:"add-items-button" %>
+    </div>
+    
+    <table>
+      <tr>
+        <td>項目名</td>
+        <td>学習時間</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <% Item.where(categories_id: 2,created_at:  @selected_day.in_time_zone.all_month).each do |p| %>
+        <tr>
+          <td><%= p.name %><%= p.id %></td>
+
+          <%= form_with(model: p, local: true) do |f| %>
+            <td><%= f.number_field :learning_time, min: 0, value: p.learning_time, class: '' %></td>
+            <td><%= f.submit "学習時間を保存する", class: "learning-time-confirm update-btn" %></td>
+
+            <div id="confirmation-modal-update" class="modal" data-items-update-url="<%= items_update_item_path(p.id) %>">
+            <div class="modal-content">
+            <p><%= p.name %>の学習時間を保存しました！</p>
+              <div class="modal-buttons">
+              <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.user_id)  %></button>
+              </div>
+            </div>
+          </div>
+        </td>
+        <% end %>
+          <td>
+            <%= link_to '削除する', item_path(p.id), method: :delete, data: { turbo_method: :delete }, class: 'd-button delete-btn' %>
+            
+            <div id="confirmation-modal" class="modal" data-items-delete-url="<%= items_delete_path %>">
+              <div class="modal-content">
+              <p><%= p.name %>を削除しました！</p>
+                <div class="modal-buttons">
+                <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.id), method: :delete, data: { turbo_method: :delete },remote: true  %></button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="category-box">
   <div class="category-title">
-    <h1><p>フロントエンド</p></h1>
-    <%= link_to "項目を追加する", add_items_path(@user), class:"add-items-button" %>
+    <h1><p>インフラ</p></h1>
+    <%= link_to "項目を追加する", add_items_path(@user,categories_id: 3), class:"add-items-button" %>
   </div>
   
   <table>
@@ -86,22 +135,32 @@
       <td></td>
     </tr>
 
-    <% Item.where(categories_id: 1).each do |p| %>
+    <% Item.where(categories_id: 3,created_at:  @selected_day.in_time_zone.all_month).each do |p| %>
       <tr>
-        <td><%= p.name %><%= p.id %></td>
+        <td><%= p.name %><%= p.id %><</td>
 
         <%= form_with(model: p, local: true) do |f| %>
           <td><%= f.number_field :learning_time, min: 0, value: p.learning_time, class: '' %></td>
-          <td><%= f.submit "学習時間を保存する", class: "learning-time-confirm" %></td>
-        <% end %>
+          <td><%= f.submit "学習時間を保存する", class: "learning-time-confirm update-btn" %></td>
 
+          <div id="confirmation-modal-update" class="modal" data-items-update-url="<%= items_update_item_path(p.id) %>">
+          <div class="modal-content">
+          <p><%= p.name %>の学習時間を保存しました！</p>
+            <div class="modal-buttons">
+            <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.user_id)  %></button>
+            </div>
+          </div>
+        </div>
+      </td>
+      <% end %>
         <td>
           <%= link_to '削除する', item_path(p.id), method: :delete, data: { turbo_method: :delete }, class: 'd-button delete-btn' %>
-          <div id="confirmation-modal" class="modal">
+          
+          <div id="confirmation-modal" class="modal" data-items-delete-url="<%= items_delete_path %>">
             <div class="modal-content">
-              <p><%= p.name %>を削除しました！</p>
+            <p><%= p.name %>を削除しました！</p>
               <div class="modal-buttons">
-                <button clss="add-items-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.id), method: :delete, data: { turbo_method: :delete },remote: true  %></button>
+              <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.id), method: :delete, data: { turbo_method: :delete },remote: true  %></button>
               </div>
             </div>
           </div>

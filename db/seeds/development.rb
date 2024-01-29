@@ -5,10 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.create!(id:1,
-            name: "Test User",
-             email: "test@yahoo.co.jp",
-             password:              "password",
-             password_confirmation: "password",
-             img_path: "default.img" ,
-             introduction: "testtesttesttesttesttesttesttesttesttesttest")
+
+# User.create!(id:1,
+#             name: "Test User",
+#              email: "test@yahoo.co.jp",
+#              password:              "password",
+#              password_confirmation: "password",
+#              img_path: "default.img" ,
+#              introduction: "testtesttesttesttesttesttesttesttesttesttest")
+
+Category.create!(categories_id:1,name:'バックエンド')   
+Category.create!(categories_id:2,name:'フロントエンド')  
+Category.create!(categories_id:3,name:'インフラ')      
+             
+
