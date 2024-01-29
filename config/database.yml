@@ -20,10 +20,26 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+# production:
+#   <<: *default
+#   adapter: postgresql
+#   encoding: unicode
+#   database: my_portfolio_db_ailm
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: my_portfolio_db_ailm_user
+#   password: password
+#   url: <%= ENV['DATABASE_URL'] %>
+
+
+  # database: my_portfolio_db_ailm
+  # username: my_portfolio_db_ailm_user
+  # password: 7TUynyno4N6ZHB9qeycvF2cs9O1Y38HD
+  # adapter: postgresql
+  # encoding: unicode
+  # url: <%= ENV['DATABASE_URL'] %>
+
 production:
   <<: *default
-  database: my_port
   adapter: postgresql
   encoding: unicode
   url: <%= ENV['DATABASE_URL'] %>
-

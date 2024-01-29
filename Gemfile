@@ -18,7 +18,7 @@ gem 'image_processing', '~> 1.2'
 gem 'sass-rails', '>= 3.2'
 gem 'turbolinks', '~> 5.2'
 gem 'webpacker', '~> 5.4.4'
-gem 'pg'
+
 
 
 group :development, :test do
@@ -41,7 +41,9 @@ group :test do
   gem "guard-minitest",           "2.4.6"
 end
 
-
+group :production do
+  gem 'pg'
+end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
 #gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
