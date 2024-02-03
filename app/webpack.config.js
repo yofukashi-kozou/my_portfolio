@@ -14,4 +14,4 @@ module.exports = {
 };
 
 // module.exports = environment;
-module.exports = production;
+module.exports = environment;
