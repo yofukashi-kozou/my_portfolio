@@ -6,12 +6,12 @@ environment.plugins.append('Provide', new webpack.ProvidePlugin({
   Turbolinks: 'turbolinks',
 }));
 
-// 'entry'を直接指定するのではなく、environment.config.mergeを使用してマージします
-environment.config.merge({
+module.exports = {
   entry: {
     main: 'app/javascript/application.js'
   },
   // 他の設定...
-});
+};
 
-module.exports = environment;
+// module.exports = environment;
+module.exports = production;
