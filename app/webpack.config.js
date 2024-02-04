@@ -12,7 +12,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@hotwired/turbo-rails': 'path/to/turbo-rails', // 実際のパスに変更してください
+      '@hotwired/turbo-rails': require.resolve('@hotwired/turbo-rails'),// 実際のパスに変更してください
     }
   // 他の設定...
   }
