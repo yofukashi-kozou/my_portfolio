@@ -10,7 +10,12 @@ module.exports = {
   entry: {
     main: 'app/javascript/application.js'
   },
+  resolve: {
+    alias: {
+      '@hotwired/turbo-rails': 'path/to/turbo-rails', // 実際のパスに変更してください
+    }
   // 他の設定...
+  }
 };
 
 // module.exports = environment;
