@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@hotwired/turbo": "^7.3.0",
+    "@hotwired/turbo-rails": "^7.3.0",
     "@rails/webpacker": "5.4.4",
     "chart.js": "^4.4.1",
     "jquery": "^3.7.1",
