@@ -101,7 +101,7 @@ class ItemsController < ApplicationController
 
     def destroy
         @item = Item.find(params[:id])
-        debugger
+
         user_id = @item.user_id 
         @item.destroy
         flash[:success] = "deleted"
