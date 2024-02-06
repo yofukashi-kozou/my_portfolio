@@ -14,6 +14,7 @@
     "webpack-dev-server": "^3"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "develop": "NODE_OPTIONS='--openssl-legacy-provider' gatsby develop"
   }
 }
