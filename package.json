@@ -19,6 +19,6 @@
     "production":"NODE_OPTIONS='--openssl-legacy-provider' gatsby production"
   },
 "engines": {
-  "node": "16.x"
+  "node": "18.x"
 }
 }
