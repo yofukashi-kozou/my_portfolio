@@ -17,5 +17,8 @@
     "build": "webpack --config webpack.config.js",
     "develop": "NODE_OPTIONS='--openssl-legacy-provider' gatsby develop",
     "production":"NODE_OPTIONS='--openssl-legacy-provider' gatsby production"
-  }
+  },
+"engines": {
+  "node": "16.x"
+}
 }
