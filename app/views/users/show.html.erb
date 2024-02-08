@@ -4,7 +4,7 @@
   <div class="user-info-flame">
       <div class="user-avatar">
 
-      <% image_tag @user.avatar if user.avatar.attached?%>
+      <% image_tag @user.avatar if @user.avatar.attached?%>
       </div>
       <div class="user-self-introduction">
         <h1>自己紹介</h1>
