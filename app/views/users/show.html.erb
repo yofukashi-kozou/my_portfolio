@@ -9,6 +9,10 @@
       <%= image_tag(@user.avatar, class: "user-avatar") %>
     <% end %>
 
+
+    <%= image_tag(@user.avatar , class: "user-avatar") if @user.avatar.present? %>
+    <%= image_tag(@user.avatar , class: "user-avatar")  if @user.avatar.attached? %>
+    <%= image_tag(@user.avatar , class: "user-avatar")  unless @user.avatar.blank? %>
       </div>
       <div class="user-self-introduction">
         <h1>自己紹介</h1>
