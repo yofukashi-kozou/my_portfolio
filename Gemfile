@@ -42,6 +42,10 @@ group :test do
   gem "guard-minitest",           "2.4.6"
 end
 
+group :development, :test do
+  gem 'pg', '1.5.4'
+end
+
 group :production do
   gem 'pg', '1.5.4'
 end
