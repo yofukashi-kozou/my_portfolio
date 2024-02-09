@@ -93,7 +93,7 @@ class ItemsController < ApplicationController
     def add_items
         @item = Item.new
         # @category = Category.find_by!(params[:categories_id])
-        # @category = Category.find(params[:categories_id])
+        @category = Category.find(params[:categories_id])
         user_id = Item.find_by(id: params[:id])
         @user = User.find(params[:id])
 
