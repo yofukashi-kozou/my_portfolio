@@ -1,11 +1,12 @@
 
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("turbolinks:load", function()
+   {
     var deleteBtns = document.getElementsByClassName('delete-btn');
     var modal = document.getElementById('confirmation-modal');
     var confirmYesBtn = document.getElementById('confirm-yes');
 
-    console.log("通った削除");
+    console.log("通った削除aaaaaaa");
 
      // データ属性からURLを取得
     var itemsDeleteUrl = document.getElementById('confirmation-modal').dataset.itemsDeleteUrl;
@@ -43,7 +44,7 @@
 
 // 更新
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("turbolinks:load", function() {
     var updateBtns = document.getElementsByClassName('update-btn');
     var modal = document.getElementById('confirmation-modal-update');
     var confirmYesBtn = document.getElementById('confirm-yes');
@@ -66,7 +67,7 @@
     confirmYesBtn.addEventListener('click', function() {
       hideModal();
 ;
-      window.location.href = afterDeleteUrl;
+      window.location.href = skillEditUrl;
     });
 
 

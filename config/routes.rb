@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   post   "/login",   to: "sessions#create"
   delete '/items/:id' , to: 'items#destroy' ,as: 'items_delete'
   get '/items/:id/items_create' , to: 'items#create' ,as: 'items_create'
-  get '/items/:id/items_update' , to: 'items#update' ,as: 'items_update'
+  # get '/items/:id/items_update' , to: 'items#update' ,as: 'items_update'
   get '/items/:id' , to: 'items#skill_edit'
   get '/items/:id' , to: 'items#skill_edit' ,as: 'after_delete'
-  get '/items/:id/skill_edit' ,to: 'items#skill_edit',as: 'skill_edit_user'
+  get '/items/skill_edit' ,to: 'items#skill_edit',as: 'skill_edit_user'
   get '/items/add_items/:id', to: 'items#add_items', as: 'add_items'
 
 

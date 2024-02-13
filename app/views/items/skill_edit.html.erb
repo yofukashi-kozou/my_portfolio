@@ -1,10 +1,10 @@
 <% content_for :js do %>
-  <%= javascript_import_module_tag "modal" %>
-  <%= javascript_import_module_tag "select" %>
-  <%= javascript_import_module_tag "turbo" %>
+  <%= javascript_import_module_tag 'modal' %>
+  <%= javascript_import_module_tag 'select' %>
+
 <% end %>
 
-
+<%= @user.id %>
 
 <%= render 'layouts/header' %>
 
@@ -21,6 +21,9 @@
 
   
  
+  <script>
+
+  </script>
 
   <div class="category-box">
     <div class="category-title">
@@ -36,7 +39,7 @@
         <td></td>
       </tr>
 
-      <% Item.where(categories_id: 1,created_at:  @selected_day.in_time_zone.all_month).each do |p| %>
+      <% Item.where(categories_id: 1,user_id:@user.id, created_at:  @selected_day.in_time_zone.all_month).each do |p| %>
         <tr>
           <td><%= p.name %><%= p.id %></td>
 
@@ -48,7 +51,7 @@
             <div class="modal-content">
             <p><%= p.name %>の学習時間を保存しました！</p>
               <div class="modal-buttons">
-              <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.user_id)  %></button>
+              <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.id)  %></button>
               </div>
             </div>
           </div>
@@ -61,7 +64,7 @@
               <div class="modal-content">
               <p><%= p.name %>を削除しました！</p>
                 <div class="modal-buttons">
-                <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.id), method: :delete, data: { turbo_method: :delete },remote: true  %></button>
+                <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.id), method: :delete, data: { turbo_method: :delete ,"turbolinks" => false},remote: true  %></button>
                 </div>
               </div>
             </div>
@@ -105,13 +108,13 @@
         </td>
         <% end %>
           <td>
-            <%= link_to '削除する', item_path(p.id), method: :delete, data: { turbo_method: :delete }, class: 'd-button delete-btn' %>
+            <%= link_to '削除する', item_path(p.user_id), method: :delete, data: { turbo_method: :delete }, class: 'd-button delete-btn' %>
             
             <div id="confirmation-modal" class="modal" data-items-delete-url="<%= items_delete_path %>">
               <div class="modal-content">
               <p><%= p.name %>を削除しました！</p>
                 <div class="modal-buttons">
-                <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.id), method: :delete, data: { turbo_method: :delete },remote: true  %></button>
+                <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る", item_path(p.user_id), method: :delete, data: { turbo_method: :delete },remote: true  %></button>
                 </div>
               </div>
             </div>

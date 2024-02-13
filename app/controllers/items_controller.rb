@@ -46,6 +46,7 @@ class ItemsController < ApplicationController
       end
 
     def skill_edit
+        @user = User.find_by(id: session[:user_id])
         selected_day = params[:selectedDay] # JavaScriptから送られたデータを取得
         selected_id = params[:selectedid] 
         selected_no = params[:selectedno] 
@@ -59,9 +60,20 @@ class ItemsController < ApplicationController
         Rails.logger.debug "Selected No2: #{@no.inspect}"
 
         @category = Category.all
-        user_id = params[:user_id]
+        id = params[:id]
+        user_id = Item.find_by(user_id: params[:id])
+
+        Rails.logger.debug "params[:id]: #{id.inspect}"
+        Rails.logger.debug "params[:user_id]: #{user_id.inspect}"
+
+
+
+
+
+
+        #user_id = params[:user_id]
         # @item= Item.find_by(id: params[:id])
-        @user = User.find(params[:id])
+        #@user = User.find(params[:id])
         @today =Date.today
         @last_month_day =Date.today.last_month
         @two_months_ago_day =Date.today.months_since(-2)
@@ -100,24 +112,25 @@ class ItemsController < ApplicationController
     end
 
     def destroy
+        # debugger
         @item = Item.find(params[:id])
 
         user_id = @item.user_id 
         @item.destroy
         flash[:success] = "deleted"
-        puts "Destroy action successfully executed!" 
-        redirect_to after_delete_path, status: :see_other
+
+        redirect_to after_delete_path(user_id), status: :see_other
     end
 
     def update
-# debugger
+
          @item = Item.find(params[:id])
 
         if @item.update(item_params)
         flash[:success] = " updated"
-        # debugger
-        puts "Params: #{params.inspect}"
-        redirect_to  after_delete_url(@item.user_id)
+
+        # puts "Params: #{params.inspect}"
+        redirect_to skill_edit_user_url
         else
         puts @item.errors.full_messages
         redirect_to  root_url
@@ -127,9 +140,8 @@ class ItemsController < ApplicationController
 
   
     def create
+
         @item= Item.new(create_params)
-        @user_id =@item.user_id
-        @user = User.find(@user_id)
 
         if @item.save
             redirect_to skill_edit_user_path(@item.user_id), notice: '追加されました' 
