@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function()
+document.addEventListener('DOMContentLoaded', function()
    {
     var deleteBtns = document.getElementsByClassName('delete-btn');
     var modal = document.getElementById('confirmation-modal');
@@ -42,7 +42,7 @@ document.addEventListener("turbolinks:load", function()
 
 // 更新
 
-  document.addEventListener("turbolinks:load", function() {
+  document.addEventListener('DOMContentLoaded', function() {
     var updateBtns = document.getElementsByClassName('update-btn');
     var modal = document.getElementById('confirmation-modal-update');
     var confirmYesBtn = document.getElementById('confirm-yes');
@@ -84,7 +84,7 @@ document.addEventListener("turbolinks:load", function()
 
 // 追加
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener('DOMContentLoaded', function() {
   var createBtns = document.getElementsByClassName('create-btn');
   var modal = document.getElementById('confirmation-modal-add');
   var confirmYesBtn = document.getElementById('confirm-yes');
