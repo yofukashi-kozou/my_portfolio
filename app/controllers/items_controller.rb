@@ -103,6 +103,7 @@ class ItemsController < ApplicationController
 
     
     def add_items
+        @user = User.find_by(id: session[:user_id])
         @item = Item.new
         # @category = Category.find_by!(params[:categories_id])
         @category = Category.find(params[:categories_id])
@@ -112,7 +113,8 @@ class ItemsController < ApplicationController
     end
 
     def destroy
-        # debugger
+        @user = User.find_by(id: session[:user_id])
+        debugger
         @item = Item.find(params[:id])
 
         user_id = @item.user_id 
@@ -123,7 +125,7 @@ class ItemsController < ApplicationController
     end
 
     def update
-
+        # @item = Item.find_by(id: params[:id])
          @item = Item.find(params[:id])
 
         if @item.update(item_params)

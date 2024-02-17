@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get    "/users/new",   to: "users#new"
   post   "/login",   to: "sessions#create"
   delete '/items/:id' , to: 'items#destroy' ,as: 'items_delete'
-  get '/items/:id/items_create' , to: 'items#create' ,as: 'items_create'
-  # get '/items/:id/items_update' , to: 'items#update' ,as: 'items_update'
+  get '/items/items_create' , to: 'items#create' ,as: 'items_create'
+  post '/items/items_update' , to: 'items#update' ,as: 'items_update'
   get '/items/:id' , to: 'items#skill_edit'
   get '/items/:id' , to: 'items#skill_edit' ,as: 'after_delete'
   get '/items/skill_edit' ,to: 'items#skill_edit',as: 'skill_edit_user'
