@@ -1,7 +1,7 @@
 
 
 // 月選択
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('click', function() {
     var selectBox = document.querySelector('.selectbox-3 select');
     // var resultElement = document.getElementById('result');
   
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // サーバーサイドへの送信などが必要であれば、ここで行う
         fetch('/items/' + selectedValues[1] + '/skill_edit', {
         // fetch('/items/' + selectedValues[1] + '/update_selected_day', {
+          // fetch('/items/skill_edit',{ 
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -27,18 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => {
           // HTMLレスポンスを取得
           return response.text();
-        //   return response.json();
+          // return response.json();
         })
         .then(data => {
 
           // ここで取得したデータを使って表示を更新するなどの処理を行う
-          console.log(data);
-        //  window.location.href = '/items/' + selectedValues[1] + '/update_selected_day';z
-        //  window.location.href = '/items/' + selectedValues[1] + '/skill_edit';
-        // Turbo.visit(window.location, { action: 'replace' });
-        // console.log(selectedValue);
-        Turbo.visit('/items/' + selectedValues[1] + '/skill_edit?selectedDay=' + selectedValues[0] + '&selectedid=' + selectedValues[1] + '&selectedno=' + selectedValues[2], { action: 'replace' });
-        // Turbo.visit('/items/' + selectedValues[1] + '/skill_edit', { action: 'replace' });
+     
+        //  window.location.href = '/items/skill_edit';
+         window.location.href = '/items/skill_edit?selectedDay=' + selectedValues[0] + '&selectedid=' + selectedValues[1] + '&selectedno=' + selectedValues[2];
 
         });
       });

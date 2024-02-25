@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function()
     confirmYesBtn.addEventListener('click', function() {
       hideModal();
 ;
-      window.location.href = afterDeleteUrl;
+      window.location.href = skillEditUserUrl;
 
     });
 

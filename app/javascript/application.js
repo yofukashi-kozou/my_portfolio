@@ -2,3 +2,5 @@
 // import "@hotwired/turbo-rails"
 // import Turbo from '@hotwired/turbo-rails';
 //= require turbolinks
+
+//= require rails-ujs

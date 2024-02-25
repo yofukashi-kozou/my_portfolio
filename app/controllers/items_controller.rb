@@ -47,7 +47,8 @@ class ItemsController < ApplicationController
 
     def skill_edit
         @user = User.find_by(id: session[:user_id])
-        selected_day = params[:selectedDay] # JavaScriptから送られたデータを取得
+         selected_day = params[:selectedDay] # JavaScriptから送られたデータを取得
+
         selected_id = params[:selectedid] 
         selected_no = params[:selectedno] 
         Rails.logger.debug "Selected Day1: #{selected_day.inspect}"
@@ -113,15 +114,16 @@ class ItemsController < ApplicationController
     end
 
     def destroy
-        @user = User.find_by(id: session[:user_id])
         debugger
+        @user = User.find_by(id: session[:user_id])
+
         @item = Item.find(params[:id])
 
         user_id = @item.user_id 
         @item.destroy
         flash[:success] = "deleted"
 
-        redirect_to after_delete_path(user_id), status: :see_other
+        redirect_to skill_edit_user_url, status: :see_other
     end
 
     def update
