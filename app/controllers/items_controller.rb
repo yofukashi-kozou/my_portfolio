@@ -148,7 +148,7 @@ class ItemsController < ApplicationController
         @item= Item.new(create_params)
 
         if @item.save
-            redirect_to skill_edit_user_path(@item.user_id), notice: '追加されました' 
+            redirect_to skill_edit_user_path, notice: '追加されました' 
         else
         flash.now[:alert] = '追加に失敗しました'
         redirect_to skill_edit_user_path(@item.user_id)
