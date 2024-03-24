@@ -1,41 +1,43 @@
-document.addEventListener('DOMContentLoaded', function()
-   {
-    var deleteBtns = document.getElementsByClassName('delete-btn');
-    var modal = document.getElementById('confirmation-modal');
-    var confirmYesBtn = document.getElementById('confirm-yes');
+// document.addEventListener('click', function(){
+//   console.log("削除ボタン")
+// });
 
-    console.log("通った削除");
+// document.addEventListener('DOMContentLoaded', function()
+//    {
+//     var deleteBtns = document.getElementsByClassName('delete-btn');
+//     var modal = document.getElementById('confirmation-modal');
+//     var confirmYesBtn = document.getElementById('confirm-yes');
 
-     // データ属性からURLを取得
-    var itemsDeleteUrl = document.getElementById('confirmation-modal').dataset.itemsDeleteUrl;
+//      // データ属性からURLを取得
+//     var itemsDeleteUrl = document.getElementById('confirmation-modal').dataset.itemsDeleteUrl;
 
-    console.log(itemsDeleteUrl);
+//     console.log(itemsDeleteUrl);
 
-    Array.from(deleteBtns).forEach(function(deleteBtn) {
-      deleteBtn.addEventListener('click', function(event) {
-        event.preventDefault();
-        showModal();
-      });
-    });
+//     Array.from(deleteBtns).forEach(function(deleteBtn) {
+//       deleteBtn.addEventListener('click', function(event) {
+//         event.preventDefault();
+//         showModal();
+//       });
+//     });
 
-    confirmYesBtn.addEventListener('click', function() {
-      hideModal();
-;
-      window.location.href = skillEditUserUrl;
+//     confirmYesBtn.addEventListener('click', function() {
+//       hideModal();
+// ;
+//       window.location.href = skillEditUserUrl;
 
-    });
-
-
+//     });
 
 
-    function showModal() {
-      modal.style.display = 'block';
-    }
 
-    function hideModal() {
-      modal.style.display = 'none';
-    }
-  });
+
+//     function showModal() {
+//       modal.style.display = 'block';
+//     }
+
+//     function hideModal() {
+//       modal.style.display = 'none';
+//     }
+//   });
 
 
 
@@ -46,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function()
   document.addEventListener('DOMContentLoaded', function() {
     var updateBtns = document.getElementsByClassName('update-btn');
     var modal = document.getElementById('confirmation-modal-update');
-    var confirmYesBtn = document.getElementById('confirm-yes');
+    var confirmYesBtn = document.getElementById('update-confirm-yes');
 
     console.log("通った更新");
     
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function()
     confirmYesBtn.addEventListener('click', function() {
       hideModal();
 ;
-      window.location.href = skillEditUrl;
+      
     });
 
 
@@ -78,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function()
 
     function hideModal() {
       modal.style.display = 'none';
+
     }
   });
 
@@ -89,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function()
 document.addEventListener('DOMContentLoaded', function() {
   var createBtns = document.getElementsByClassName('create-btn');
   var modal = document.getElementById('confirmation-modal-add');
-  var confirmYesBtn = document.getElementById('confirm-yes');
+  var confirmYesBtn = document.getElementById('add-confirm-yes');
   let modalLearningTimeDisplay = document.getElementById('modalLearningTimedisplay');
   var itemNameDisplay = document.getElementById('itemNameDisplay');
   
@@ -120,8 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   confirmYesBtn.addEventListener('click', function() {
     hideModal();
-;
-    window.location.href = skillEditUrl;
   });
 
 
@@ -131,5 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function hideModal() {
     modal.style.display = 'none';
+
   }
 });

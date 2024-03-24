@@ -114,16 +114,28 @@ class ItemsController < ApplicationController
     end
 
     def destroy
-        debugger
         @user = User.find_by(id: session[:user_id])
-
         @item = Item.find(params[:id])
-
-        user_id = @item.user_id 
         @item.destroy
-        flash[:success] = "deleted"
 
-        redirect_to skill_edit_user_url, status: :see_other
+        render json: { deleted_item_id: @item.name }
+
+
+        # if @item.destroy
+        #     item_name = @item.name 
+        #     @messege = { 'message' => '削除しました。' }
+           
+        #     respond_to do |format|      
+        #         format.html
+        #         format.json { render json: @messege }
+        #     end
+                
+        #     else
+
+        #     messege = "削除失敗"
+        #     render json: { messege: messege }
+        # end
+        # redirect_to skill_edit_user_url, status: :see_other
     end
 
     def update
@@ -151,7 +163,7 @@ class ItemsController < ApplicationController
             redirect_to skill_edit_user_path, notice: '追加されました' 
         else
         flash.now[:alert] = '追加に失敗しました'
-        redirect_to skill_edit_user_path(@item.user_id)
+        redirect_to skill_edit_user_path
 
         end
         end
