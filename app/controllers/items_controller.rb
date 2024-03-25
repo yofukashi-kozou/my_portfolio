@@ -142,10 +142,16 @@ class ItemsController < ApplicationController
         # @item = Item.find_by(id: params[:id])
          @item = Item.find(params[:id])
 
+        #  if @item.update(item_params)
+        #     render json: { update_item_id: @item }
+        #   else
+        #     render json: { error: '更新に失敗しました' }, status: :unprocessable_entity
+        #   end
+
         if @item.update(item_params)
         flash[:success] = " updated"
 
-        # puts "Params: #{params.inspect}"
+        puts "Params: #{params.inspect}"
         redirect_to skill_edit_user_url
         else
         puts @item.errors.full_messages

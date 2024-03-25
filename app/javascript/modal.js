@@ -44,8 +44,8 @@
 
 
 // 更新
-
-  document.addEventListener('DOMContentLoaded', function() {
+  // updateBtn.forEach('click',function(){ 
+  document.addEventListener('click', function() {
     var updateBtns = document.getElementsByClassName('update-btn');
     var modal = document.getElementById('confirmation-modal-update');
     var confirmYesBtn = document.getElementById('update-confirm-yes');
@@ -54,7 +54,7 @@
     
 
      // データ属性からURLを取得
-    var itemsUpdateUrl = document.getElementById('confirmation-modal-update').dataset.itemsUpdateUrl;
+    var itemsUpdateUrl = document.getElementById('confirmation-modal-update');
 
     console.log(itemsUpdateUrl);
 
@@ -88,8 +88,8 @@
 
 
 // 追加
-
-document.addEventListener('DOMContentLoaded', function() {
+// createBtn.forEach('click',function(){ 
+document.addEventListener('click', function() {
   var createBtns = document.getElementsByClassName('create-btn');
   var modal = document.getElementById('confirmation-modal-add');
   var confirmYesBtn = document.getElementById('add-confirm-yes');
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
    // データ属性からURLを取得
-  var itemsCreateUrl = document.getElementById('confirmation-modal-add').dataset.itemsCreateUrl;
+  var itemsCreateUrl = document.getElementById('confirmation-modal-add')
 
   console.log("追加");
   console.log(modalLearningTimeDisplay );

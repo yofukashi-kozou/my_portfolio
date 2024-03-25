@@ -10,7 +10,7 @@
 
 <div class="edit-flame">
   <h1><%=  @category.name %>に項目を追加</h1>
-  <%= form_for @item,class:'form_add' do |form| %>
+  <%= form_for @item, URL:items_create_item_path,class:'form_add'  do |form| %>
 
     <div class="edit-box">
       <div class="edit-self-introduction">

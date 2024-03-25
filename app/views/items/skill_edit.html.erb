@@ -45,7 +45,7 @@
 
       <% Item.where(categories_id: 1,user_id:@user.id, created_at:  @selected_day.in_time_zone.all_month).each do |p| %>
         <tr>
-          <td><%= p.name %><%= p.id %></td>
+          <td><%= p.name %></td>
 
           <%= form_with(model: p) do |f| %>
             <td><%= f.number_field :learning_time, min: 0, value: p.learning_time, class: '' %></td>
@@ -79,6 +79,8 @@
     </table>
   </div>
 
+      
+
 
 
   <div class="category-box">
@@ -97,7 +99,7 @@
 
       <% Item.where(categories_id: 2,user_id:@user.id, created_at:  @selected_day.in_time_zone.all_month).each do |p| %>
         <tr>
-          <td><%= p.name %><%= p.id %></td>
+          <td><%= p.name %></td>
 
           <%= form_with(model: p) do |f| %>
             <td><%= f.number_field :learning_time, min: 0, value: p.learning_time, class: '' %></td>
@@ -147,7 +149,7 @@
 
     <% Item.where(categories_id: 3,user_id:@user.id, created_at:  @selected_day.in_time_zone.all_month).each do |p| %>
       <tr>
-        <td><%= p.name %><%= p.id %></td>
+        <td><%= p.name %></td>
 
         <%= form_with(model: p) do |f| %>
           <td><%= f.number_field :learning_time, min: 0, value: p.learning_time, class: '' %></td>

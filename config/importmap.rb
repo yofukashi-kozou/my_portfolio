@@ -5,3 +5,4 @@ pin "application", preload: true
 pin "modal"
 pin "select"
 pin "delete_script"
+pin "update_script"
