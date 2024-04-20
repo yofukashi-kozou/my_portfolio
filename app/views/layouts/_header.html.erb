@@ -1,14 +1,28 @@
 
 <header class="header">
   <div class ="logo">
-    <a class="logo-font" href="index">My profile</a>
+    <%= link_to "My profile", root_path , class:"logo-font" %>
+
   </div>
 
 
+
   <div class ="logout_button">
+  <% if current_page?(root_path) %>
+
+  <%  elsif  current_page?(new_user_path)  %>
   <form class="button_to" method="get" action="/sessions/new">
     <button class="header-button" type="submit">ログイン</button>
   </form>
+
+
+  <%  elsif  logged_in? %>
+  <button ><%= link_to "ログアウト",  logout_path ,method: :delete %></button>
+  <% else %>
+  <form class="button_to" method="get" action="/sessions/new">
+    <button class="header-button" type="submit">ログイン</button>
+  </form>
+  <% end %>
 </div>
 
 </header>

@@ -45,44 +45,44 @@
 
 // 更新
   // updateBtn.forEach('click',function(){ 
-  document.addEventListener('click', function() {
-    var updateBtns = document.getElementsByClassName('update-btn');
-    var modal = document.getElementById('confirmation-modal-update');
-    var confirmYesBtn = document.getElementById('update-confirm-yes');
+//   document.addEventListener('click', function() {
+//     var updateBtns = document.getElementsByClassName('update-btn');
+//     var modal = document.getElementById('confirmation-modal-update');
+//     var confirmYesBtn = document.getElementById('update-confirm-yes');
 
-    console.log("通った更新");
+//     console.log("通った更新");
     
 
-     // データ属性からURLを取得
-    var itemsUpdateUrl = document.getElementById('confirmation-modal-update');
+//      // データ属性からURLを取得
+//     var itemsUpdateUrl = document.getElementById('confirmation-modal-update');
 
-    console.log(itemsUpdateUrl);
+//     console.log(itemsUpdateUrl);
 
-    Array.from(updateBtns).forEach(function(updateBtn) {
-      updateBtn.addEventListener('click', function(event) {
-        event.preventDefault();
-        showModal();
-      });
-    });
+//     Array.from(updateBtns).forEach(function(updateBtn) {
+//       updateBtn.addEventListener('click', function(event) {
+//         event.preventDefault();
+//         showModal();
+//       });
+//     });
 
-    confirmYesBtn.addEventListener('click', function() {
-      hideModal();
-;
+//     confirmYesBtn.addEventListener('click', function() {
+//       hideModal();
+// ;
       
-    });
+//     });
 
 
 
 
-    function showModal() {
-      modal.style.display = 'block';
-    }
+//     function showModal() {
+//       modal.style.display = 'block';
+//     }
 
-    function hideModal() {
-      modal.style.display = 'none';
+//     function hideModal() {
+//       modal.style.display = 'none';
 
-    }
-  });
+//     }
+//   });
 
   
 

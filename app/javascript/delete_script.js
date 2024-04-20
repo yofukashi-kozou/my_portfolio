@@ -1,5 +1,5 @@
 var deleteButtons = document.querySelectorAll('#deleteButton');
-const modal = document.getElementById('modal');
+const modal = document.getElementById('delete-modal');
 
 deleteButtons.forEach(function(button) {
   button.addEventListener('click', function() {

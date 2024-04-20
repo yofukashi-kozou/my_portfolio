@@ -1,8 +1,8 @@
 <% content_for :js do %>
-  <%= javascript_import_module_tag 'modal' %>
+
   <%= javascript_import_module_tag 'select' %>
   <%= javascript_import_module_tag 'delete_script' %>
-
+  <%= javascript_import_module_tag 'update_script' %>
 <% end %>
 
 
@@ -32,7 +32,7 @@
   <div class="category-box">
     <div class="category-title">
       <h1><p>バックエンド</p></h1>
-      <%= link_to "項目を追加する", add_items_path(@user,categories_id: 1), class:"add-items-button" %>
+      <%= link_to "項目を追加する", add_items_path(@user,categories_id: 1,created_at:  @selected_day), class:"add-items-button" %>
     </div>
     
     <table>
@@ -47,15 +47,18 @@
         <tr>
           <td><%= p.name %></td>
 
-          <%= form_with(model: p) do |f| %>
-            <td><%= f.number_field :learning_time, min: 0, value: p.learning_time, class: '' %></td>
-            <td><%= f.submit "学習時間を保存する", class: "learning-time-confirm update-btn" %></td>
+          <%= form_with(model: p, url: skill_edit_user_path(created_at: @selected_day, selected_no: @no), method: :post, id: "update-form") do |form| %>
+            <td><%= form.number_field :learning_time, min: 0, value: p.learning_time ,id: "learningTime"  , class: '' %></td>
+            <td><button id='updateButton', update-button-id="<%= p.id %>" ><%= form.submit "学習時間を保存する", class: "learning-time-confirm update-btn"  %></button>
+            <%= form.hidden_field :item_id, value: p.id, id:'item-id'%>
+            </td>
 
-            <div id="confirmation-modal-update" class="modal" data-items-update-url="<%= items_update_path %>">
+            <div id="update-modal" class="modal">
             <div class="modal-content">
-            <p><%= p.name %>の学習時間を保存しました！</p
-              <div class="modal-buttons">
-              <button class="back-edit-button" id="update-confirm-yes"><%= link_to "編集ページに戻る" %></button>
+                <div id="updateItemIdArea"></div> 
+                 
+                <div class="modal-buttons">
+              <button class="back-edit-button" id="update-confirm-yes"><%= link_to "編集ページに戻る",skill_edit_user_path(created_at: @selected_day,selected_no: @no)  %></button>
               </div>
             </div>
           </div>
@@ -64,12 +67,12 @@
           <td>
           <button id="deleteButton" class="d-button delete-btn", delete-button-id="<%= p.id %>" >削除する</button>
           
-          <div class="modal" id="modal">
+          <div class="modal" id="delete-modal">
           <div class="modal-content">
           <div id="deletedItemIdArea"></div> 
 
             <div class="modal-buttons">
-            <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る",skill_edit_user_path , method: :delete  %></button>
+            <button class="back-edit-button" id="confirm-yes"><%= link_to "編集ページに戻る",skill_edit_user_path(created_at: @selected_day,selected_no: @no) , method: :delete  %></button>
               </div>
             </div>
           </div>
@@ -78,8 +81,6 @@
       <% end %>
     </table>
   </div>
-
-      
 
 
 
@@ -105,7 +106,7 @@
             <td><%= f.number_field :learning_time, min: 0, value: p.learning_time, class: '' %></td>
             <td><%= f.submit "学習時間を保存する", class: "learning-time-confirm update-btn" %></td>
 
-            <div id="confirmation-modal-update" class="modal" data-items-update-url="<%= items_update_path %>">
+            <div id="confirmation-modal-update"  >
             <div class="modal-content">
             <p><%= p.name %>の学習時間を保存しました！</p
               <div class="modal-buttons">

@@ -1,5 +1,6 @@
 <% content_for :js do %>
-  <%= javascript_import_module_tag "modal" %>
+
+  <%= javascript_import_module_tag "add_script" %>
 <% end %>
 
 
@@ -10,26 +11,30 @@
 
 <div class="edit-flame">
   <h1><%=  @category.name %>に項目を追加</h1>
-  <%= form_for @item, URL:items_create_item_path,class:'form_add'  do |form| %>
+
+    <%= form_with(model: @item, local: true, html: { id: "add-form" }) do |form| %>
+
 
     <div class="edit-box">
       <div class="edit-self-introduction">
         <label>項目名</label>
-        <%= form.text_area :name, class: 'add-items-form'%>
+        <%= form.text_area :name, class: 'add-items-form',id: "itemName"%>
       </div>
       <div class="add-img-box">
         <label>学習時間</label>
-        <%= form.number_field :learning_time, min: 0, class: '' %>
+        <%= form.number_field :learning_time, min: 0, class: '',id:"itemLearningtime" %>
 
         <%= form.hidden_field :categories_id, value: @category.id %>
-        <%= form.hidden_field :user_id, value: @user.id %>
+        <%= form.hidden_field :user_id, value: @user.id ,id: "userId" %>
       </div>
       <div class="edit-confirm">
-        <%= form.submit '追加する', class: "edit-confirm-button create-btn" %>
+        <button id='addButton' add-button-id="<%= @user.id %>"><%= form.submit '追加する', class: "edit-confirm-button create-btn" %></button>
       </div>
 
-      <div id='confirmation-modal-add' class='modal' data-items-create-url = '<%= items_create_item_path %>'>
+
+      <div id='confirmation-modal-add' class='modal' id: "addItemModal" >
       <div class="modal-content">
+      <p id="addedItemName"></p>
         <p><%= @category.name %>に<span id="itemNameDisplay"></span>を<span id="modalLearningTimedisplay"></span>で追加しました！</p>
   
         <div class="modal-buttons">

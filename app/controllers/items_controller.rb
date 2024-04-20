@@ -46,11 +46,21 @@ class ItemsController < ApplicationController
       end
 
     def skill_edit
+        
+
+
         @user = User.find_by(id: session[:user_id])
+
+        if params[:created_at].present?
+            selected_day = params[:created_at]
+            selected_no = params[:selected_no] 
+        else
          selected_day = params[:selectedDay] # JavaScriptから送られたデータを取得
+         selected_no = params[:selectedno] 
+        end
 
         selected_id = params[:selectedid] 
-        selected_no = params[:selectedno] 
+       
         Rails.logger.debug "Selected Day1: #{selected_day.inspect}"
         Rails.logger.debug "Selected Id1: #{selected_id.inspect}"
         Rails.logger.debug "Selected No1: #{selected_no.inspect}"
@@ -106,6 +116,7 @@ class ItemsController < ApplicationController
     def add_items
         @user = User.find_by(id: session[:user_id])
         @item = Item.new
+        @creat = params[:created_at]
         # @category = Category.find_by!(params[:categories_id])
         @category = Category.find(params[:categories_id])
         user_id = Item.find_by(id: params[:id])
@@ -139,49 +150,59 @@ class ItemsController < ApplicationController
     end
 
     def update
-        # @item = Item.find_by(id: params[:id])
-         @item = Item.find(params[:id])
+        item_id = params[:id]
 
-        #  if @item.update(item_params)
-        #     render json: { update_item_id: @item }
-        #   else
-        #     render json: { error: '更新に失敗しました' }, status: :unprocessable_entity
-        #   end
+      
+        @item = Item.find(item_id)
 
+      
         if @item.update(item_params)
-        flash[:success] = " updated"
-
-        puts "Params: #{params.inspect}"
-        redirect_to skill_edit_user_url
+          render json: { update_item_id: @item }
         else
-        puts @item.errors.full_messages
-        redirect_to  root_url
+          render json: { error: '更新に失敗しました' }, status: :unprocessable_entity
         end
-    end
+      end
 
 
   
     def create
-
+        created_at = params[:created_at]
         @item= Item.new(create_params)
+        # @item = Item.new(item_params.merge(created_at: created_at))
+
+        # Rails.logger.debug "Item found: #{@item.inspect}"
+        # debugger
 
         if @item.save
-            redirect_to skill_edit_user_path, notice: '追加されました' 
+            # redirect_to skill_edit_user_path(created_at), notice: '追加されました' 
+            # debugger
+             render json: {add_item_id: @item  }
         else
-        flash.now[:alert] = '追加に失敗しました'
-        redirect_to skill_edit_user_path
+
+
+          render json: { error: "項目の追加に失敗しました" }, status: :unprocessable_entity
 
         end
         end
+
+    #     @item = Item.new(item_params)
+
+    #     if @item.save
+    #     #   render json: { name: @item.name ,learning_time: @item.learning_time,categories_id: @item.categories_id  }
+    #       redirect_to skill_edit_user_path, notice: '追加されました' 
+    #     else
+    #       render json: { error: "項目の追加に失敗しました" }, status: :unprocessable_entity
+    #     end
+    #   end
   
     private
   
     def item_params
-        params.require(:item).permit(:learning_time, :id, :categories_id)  
+        params.require(:item).permit(:learning_time, :id, :categories_id)    
     end
 
     def create_params
-        params.require(:item).permit(:name, :learning_time, :categories_id, :user_id,:id)
+        params.require(:item).permit(:name, :learning_time, :categories_id,:created_at, :user_id,:id)
     end  
   
   end
