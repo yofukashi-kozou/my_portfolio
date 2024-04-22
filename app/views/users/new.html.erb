@@ -30,6 +30,13 @@
       </div>
 
       <div class="form_box">
+      <div class="form_label">
+        <label>パスワード</label><br>
+      </div>
+      <%= f.password_field :password_confirmation , class: 'form-underline' %>
+    </div>
+
+      <div class="form_box">
         <%= f.submit "登録する", class: "button_blue blue_button_font" %>
       </div>
       
