@@ -1,84 +1,63 @@
-var addButtons = document.querySelectorAll('#addButton');
 
+  const addButton = document.getElementById('addButton');
+  
 
+  addButton.addEventListener('click', function(event) {
+    event.preventDefault();
 
-addButtons.forEach(function(button) {
+    const itemName = document.getElementById('itemName').value;
+    const itemLearningTime = document.getElementById('itemLearningtime').value;
+    // const categoryId = document.getElementById('').value;
+     const categoryId = document.getElementById('categoryid').value;
+     const categoryName = document.getElementById('categoryname').value;
+     const createdAt = document.getElementById('createdat').value;
+    var userId = addButton.getAttribute('add-button-id');
+    const modal = document.getElementById('add-modal');
 
-    button.addEventListener("click", function(event) {
+    console.log(categoryName);
 
-      const form = document.getElementById('add-form');
-      const itemLearningTime = document.getElementById("itemLearningTime");
-      const itemNameInput = document.getElementById("itemNameInput");
-      const addItemModal = document.getElementById("addItemModal");
-       const addedItemName = document.getElementById("addedItemName");
-      const closeModalButton = document.getElementById("closeModalButton");
-
-      // var userId = button.getAttribute('create-button-id');
-      var userId = document.getElementById("userId").value;
-      var userId2 = button.getAttribute('add-button-id');
-
-      const formData = new FormData(form);
-
-      console.log("通った追加2");
-      console.log("userName=");
-      console.log(userId);
-
-      console.log("itemName");
-      console.log(itemNameInput);
-
-      console.log("userId2");
-      console.log(userId2);
-      console.log(typeof(userId2));
-      var userId2Number = parseInt(userId2)
-      console.log(typeof(userId2Number ));
-
-      console.log("formData");
-      console.log(formData);
-
-      for (const pair of formData.entries()) {
-        console.log(pair[0] + ': ' + pair[1]);
+    const formData = {
+      item: {
+        name: itemName,
+        learning_time: itemLearningTime,
+        categories_id: categoryId,
+        user_id: userId,
+        created_at: createdAt
       }
+    };
 
-      // const itemName = itemNameInput.value;
-      // var userId = button.getAttribute(' create-button-id');
+    console.log(formData );
 
-      // fetch(form.action, {
-      fetch(`/items/${userId2Number}/items_create`, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: formData // フォームデータを送信する
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log("通った");
-        console.log(data);
-        // モーダルに追加された項目名を表示
-        // addedItemName.textContent = data.name;
-        // モーダルを表示
-        // addItemModal.style.display = "block";
+    fetch('/items/' + userId + '/items_create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log("通った追加3");
+      var addItemId = data.add_item_id;
 
-        // var deletedItemId = data.deleted_item_id;
-        console.log(data.name);
-        console.log(deletedItemId);
-        console.log("通った削除4");
-        // レスポンスの処理
-        // showModal();
-        var addItemId = data.add_item_id;
-        showModal(addItemId );
-
-      })
-
-    });
+      showModal(addItemId);
+    })
+    .catch(error => console.error('Error:', error));
   });
-  
-    // closeModalButton.addEventListener("click", function() {
-    //   // モーダルを非表示
-    //   addItemModal.style.display = "none";
-    //   // 入力フィールドをクリア
-    //   itemNameInput.value = "";
-    // });
-  
-  
+
+  function showModal(addItemId){
+    var modal = document.getElementById('add-modal'); 
+    const categoryName = document.getElementById('categoryname').value;
+    console.log("通った更新3");
+    console.log(addItemId);
+    //   modalContent.innerText = `更新された項目: ${updatedItem.name}`;
+    var modalContent = document.querySelector('.add-modal-content');
+    console.log("通った更新4");
+    // console.log(modalContent);
+
+    document.getElementById('addItemIdArea').innerHTML = `<p>${categoryName}に${addItemId.name}を${addItemId.learning_time}で追加しました！</p>`;
+      modal.style.display = 'block';
+    }
+

@@ -116,7 +116,8 @@ class ItemsController < ApplicationController
     def add_items
         @user = User.find_by(id: session[:user_id])
         @item = Item.new
-        @creat = params[:created_at]
+        @create = params[:created_at]
+        @no = params[:selected_no]
         # @category = Category.find_by!(params[:categories_id])
         @category = Category.find(params[:categories_id])
         user_id = Item.find_by(id: params[:id])
@@ -166,9 +167,8 @@ class ItemsController < ApplicationController
 
   
     def create
-        created_at = params[:created_at]
-        @item= Item.new(create_params)
-        # @item = Item.new(item_params.merge(created_at: created_at))
+        created_at = params[:item][:created_at] # Parametersからcreated_atを取得
+        @item = Item.new(create_params.merge(created_at: created_at)) # created_atをmergeして新しいItemオブジェクトを作成
 
         # Rails.logger.debug "Item found: #{@item.inspect}"
         # debugger

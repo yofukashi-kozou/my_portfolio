@@ -12,7 +12,8 @@
 <div class="edit-flame">
   <h1><%=  @category.name %>に項目を追加</h1>
 
-    <%= form_with(model: @item, local: true, html: { id: "add-form" }) do |form| %>
+
+    <%= form_with(model: @item, url: skill_edit_user_path(created_at: @create, selected_no: @no), local: true, html: { id: "add-form" }) do |form| %>
 
 
     <div class="edit-box">
@@ -24,21 +25,24 @@
         <label>学習時間</label>
         <%= form.number_field :learning_time, min: 0, class: '',id:"itemLearningtime" %>
 
-        <%= form.hidden_field :categories_id, value: @category.id %>
+        <%= form.hidden_field :categories_id, value: @category.id ,id: "categoryid" %>
         <%= form.hidden_field :user_id, value: @user.id ,id: "userId" %>
+        <%= form.hidden_field :category_name, value: @category.name ,id: "categoryname" %>
+        <%= form.hidden_field :created_at, value: @create  ,id: "createdat" %>
       </div>
       <div class="edit-confirm">
         <button id='addButton' add-button-id="<%= @user.id %>"><%= form.submit '追加する', class: "edit-confirm-button create-btn" %></button>
       </div>
 
 
-      <div id='confirmation-modal-add' class='modal' id: "addItemModal" >
+      <div id='add-modal' class='modal' >
       <div class="modal-content">
+      <div id="addItemIdArea"></div> 
       <p id="addedItemName"></p>
-        <p><%= @category.name %>に<span id="itemNameDisplay"></span>を<span id="modalLearningTimedisplay"></span>で追加しました！</p>
+
   
         <div class="modal-buttons">
-          <button class="back-edit-button" id="add-confirm-yes"><%= link_to "編集ページに戻る", items_create_item_path %></button>
+          <button class="back-edit-button" id="add-confirm-yes"><%= link_to "編集ページに戻る", skill_edit_user_path(created_at: @create,selected_no: @no)  %></button>
         </div>
       </div>
     </div>

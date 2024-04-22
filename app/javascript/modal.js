@@ -88,8 +88,9 @@
 
 
 // 追加
+document.addEventListener('DOMContentLoaded', function(){
 // createBtn.forEach('click',function(){ 
-document.addEventListener('click', function() {
+// document.addEventListener('click', function() {
   var createBtns = document.getElementsByClassName('create-btn');
   var modal = document.getElementById('confirmation-modal-add');
   var confirmYesBtn = document.getElementById('add-confirm-yes');
@@ -102,8 +103,8 @@ document.addEventListener('click', function() {
 
   console.log("追加");
   console.log(modalLearningTimeDisplay );
-
-
+  console.log(forms[1] );
+  console.log(forms[2] );
   
 
   Array.from(createBtns).forEach(function(createBtn) {
