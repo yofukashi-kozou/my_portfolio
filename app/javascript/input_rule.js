@@ -28,3 +28,4 @@ introductionTextarea.addEventListener("input", function() {
         updateButton.disabled = false;
     }
 });
+

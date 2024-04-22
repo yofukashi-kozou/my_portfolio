@@ -11,9 +11,10 @@
   <% if current_page?(root_path) %>
 
   <%  elsif  current_page?(new_user_path)  %>
-  <form class="button_to" method="get" action="/sessions/new">
-    <button class="header-button" type="submit">ログイン</button>
-  </form>
+
+
+    <button ><%= link_to "ログイン",  root_path ,method: :get %></button>
+
 
 
   <%  elsif  logged_in? %>

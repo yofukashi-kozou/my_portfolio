@@ -3,6 +3,40 @@
   
 
   addButton.addEventListener('click', function(event) {
+
+
+ const addItemTextarea = document.getElementById("addButton");
+    const addLearningTimeTextarea = document.getElementById("addButton");
+    const addItemLength = addItemTextarea.value.length;
+    const addLearningTimeLength = addLearningTimeTextarea.value.length;
+    
+    // 項目名と学習時間が空欄だったらアラート出す
+    if (!addItemTextarea.value.trim() || !addLearningTimeTextarea.value.trim()) {
+      alert("項目名と学習時間を入力してください。");
+        addButton.disabled = true;
+
+      // 現在のURLを取得
+      const currentURL = window.location.href;
+
+      // 新しいURLに遷移
+      window.location.href = currentURL;
+
+
+    } else {
+        // 追加ボタンを有効にする
+        addButton.disabled = false;
+    
+
+
+
+
+
+
+
+
+
+
+
     event.preventDefault();
 
     const itemName = document.getElementById('itemName').value;
@@ -45,6 +79,7 @@
       showModal(addItemId);
     })
     .catch(error => console.error('Error:', error));
+  }
   });
 
   function showModal(addItemId){
