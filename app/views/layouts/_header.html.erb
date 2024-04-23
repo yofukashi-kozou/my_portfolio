@@ -8,9 +8,9 @@
 
 
   <div class ="logout_button">
-  <% if current_page?(root_path) %>
+  <% if current_page?(root_path)  || current_page?(login_fault_path) %>
 
-  <%  elsif  current_page?(new_user_path)  %>
+  <%  elsif  current_page?(new_user_path)   %>
 
 
     <button ><%= link_to "ログイン",  root_path ,method: :get %></button>
@@ -19,6 +19,7 @@
 
   <%  elsif  logged_in? %>
   <button ><%= link_to "ログアウト",  logout_path ,method: :delete %></button>
+
   <% else %>
   <form class="button_to" method="get" action="/sessions/new">
     <button class="header-button" type="submit">ログイン</button>

@@ -39,6 +39,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the Sample App!"
       redirect_to root_url
     else
+      flash[:danger] = 'Invalid email/password combination' # 本当は正しくない
       render 'new', status: :unprocessable_entity
     end
   end

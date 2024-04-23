@@ -32,7 +32,7 @@
         <%= form.hidden_field :created_at, value: @create  ,id: "createdat" %>
       </div>
       <div class="edit-confirm">
-        <button id='addButton' add-button-id="<%= @user.id %>"><%= form.submit '追加する', class: "edit-confirm-button create-btn" %></button>
+        <button id='addButton' add-button-id="<%= @user.id %>"><%= form.submit '追加する', class: "edit-confirm-button create-btn", id:"input-rule" %></button>
       </div>
 
 

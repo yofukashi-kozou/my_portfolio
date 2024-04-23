@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "hello#index"
   get "/logout",  to: "sessions#destroy"
   delete "/logout",  to: "sessions#destroy"
-  get    "/login",   to: "sessions#new" 
+  get    "/login",   to: "sessions#new" ,as: 'login_fault'
   get    "/users/new",   to: "users#new" ,as: 'new_user'
   post   "/login",   to: "sessions#create"
   delete '/items/:id' , to: 'items#destroy' ,as: 'items_delete'
