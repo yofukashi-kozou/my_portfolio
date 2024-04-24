@@ -60,12 +60,33 @@ button{
   width: 480px;
 }
 
-.button_blue{
-  padding: 16px 80px;
+.login_submit_button{
+  border-style: none;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
   background: var(--primary-color, #1B5678);
+  width:268px;
+  height:53px;
+  color: #FFF;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+.button_blue{
+  display: inline-block; /* または block に設定 */
+  border-style: none;
+  padding: 16px 80px ;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: var(--primary-color, #1B5678);
+  width:268px;
+  height:53px;
 }
 
 .blue_button_font{
@@ -75,12 +96,14 @@ button{
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  width:108px;
+  height:21px;
 }
 
 .form_box{
 text-align: center;
 margin-top: 60px;
-height: 48px;
+/* height: 48px; */
 }
 
 .form_box a{
