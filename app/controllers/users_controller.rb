@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update] # 正しいユーザーのみアクセス可能なアクションを指定
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find_by(id: session[:user_id])
+    @id = session[:user_id]
 
     @today =Date.today
     @last_month_day =Date.today.last_month
@@ -39,7 +41,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the Sample App!"
       redirect_to root_url
     else
-      flash[:danger] = 'Invalid email/password combination' # 本当は正しくない
+
       render 'new', status: :unprocessable_entity
     end
   end

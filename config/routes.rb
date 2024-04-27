@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   delete "/logout",  to: "sessions#destroy"
   get    "/login",   to: "sessions#new" ,as: 'login_fault'
   get    "/users/new",   to: "users#new" ,as: 'new_user'
+  get    "/users/show",   to: "users#show" ,as: 'user_page'
   post   "/login",   to: "sessions#create"
   delete '/items/:id' , to: 'items#destroy' ,as: 'items_delete'
   post '/items/:id/items_create' , to: 'items#create' ,as: 'items_create_item'

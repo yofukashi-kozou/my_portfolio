@@ -12,7 +12,7 @@
         <div class="introduction-container">
         <p><%= @user.introduction %></p>
       </div>
-        <%= link_to "自己紹介を編集する", edit_user_path ,class:"user-self-introduction-btn"%>
+        <%= link_to "自己紹介を編集する", edit_user_path(session[:user_id]) ,class:"user-self-introduction-btn"%>
       </div>
   </div>
   <p class="user-name"><%= @user.name %></p>
@@ -21,7 +21,7 @@
   <div class="study-chart-box">
     <h1>学習チャート</h1>
   </div>
-  <%= link_to "編集する", skill_edit_user_path ,class: "user-self-introduction-btn" %>
+  <%= link_to "編集する", skill_edit_user_path(id: @id) ,class: "user-self-introduction-btn" %>
 
 <canvas id="myChart"></canvas>
 

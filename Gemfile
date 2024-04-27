@@ -18,6 +18,7 @@ gem 'image_processing', '~> 1.2'
 gem 'sass-rails', '>= 3.2'
 gem 'turbolinks', '~> 5.2'
 gem 'webpacker', '~> 5.4.4'
+gem 'rails-i18n'
 
   
 

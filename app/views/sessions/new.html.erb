@@ -1,5 +1,7 @@
 
-<p>ログインに失敗しました</p>
+<div class=" alert-danger" role="alert">
+  <p>ログインに失敗しました</p>
+</div>
 <%= render 'layouts/header' %>
   <div class="login">
   <h1 class ="login-title">ログイン</h1>
@@ -25,7 +27,7 @@
       </div>
 
       <div class="form_box">
-      <%= link_to "新規登録する", '/users/new', class: "login_submit_button" %>
+      <%= link_to "新規登録する", '/users/new', class: "button_blue blue_button_font" %>
       </div>
       <% end %>
     </div>

@@ -1,8 +1,11 @@
 
 <header class="header">
   <div class ="logo">
+  <%  if  logged_in? %>
+  <%= link_to "My profile", user_page_path(session[:user_id]) , class:"logo-font" %>
+  <% else %>
     <%= link_to "My profile", root_path , class:"logo-font" %>
-
+  <% end %>
   </div>
 
 
