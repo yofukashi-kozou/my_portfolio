@@ -2,20 +2,21 @@
 
 <div class="user-info">
   <div class="user-info-flame">
+    <div class="avataer-name">
       <div class="user-avatar">
-    
-    <%= image_tag(@user.avatar , class: "user-avatar") if @user.avatar.present? %>
-
+        <%= image_tag(@user.avatar , class: "user-avatar") if @user.avatar.present? %>
       </div>
-      <div class="user-self-introduction">
-        <h1>自己紹介</h1>
+      <div class="user-name"><p><%= @user.name %></p></div>
+    </div>
+    <div class="user-self-introduction">
+      <h1>自己紹介</h1>
         <div class="introduction-container">
-        <p><%= @user.introduction %></p>
-      </div>
+          <p><%= @user.introduction %></p>
+        </div>
         <%= link_to "自己紹介を編集する", edit_user_path(session[:user_id]) ,class:"user-self-introduction-btn"%>
-      </div>
+    </div>
   </div>
-  <p class="user-name"><%= @user.name %></p>
+
 
   <div class="study-chart-frame">
   <div class="study-chart-box">

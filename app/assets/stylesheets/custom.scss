@@ -200,9 +200,20 @@ body{
   
   .user-self-introduction{
     width: 520px;
-    height: 256px;
+    height: 340px;
+
     flex-shrink: 0;
   }
+
+  .avataer-name{
+    width:360px;
+}
+.user-name{
+    width:360px;
+}
+
+
+
   .user-self-introduction h1{
     border-bottom: 1px solid rgba(0, 0, 0, 0.50);
     width:40%;
@@ -240,10 +251,18 @@ body{
   }
   
   .user-name{
-    margin: 0 auto;
-    width:840px;
-    padding-left: 120px;
+    width:360px;
   }
+
+  .user-name p{
+    font-size:20px;
+    text-align: center;
+    margin-bottom: 0;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    word-wrap: break-word; width: 350px;
+  }
+
   
   .edit-flame{
     width: 1440px;
@@ -844,3 +863,4 @@ body{
     font-weight:400;
     font-family: Roboto;
 }
+
