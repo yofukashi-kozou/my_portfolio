@@ -41,9 +41,9 @@ group :test do
 
 end
 
-# group :development do
-#   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
-# end
+group :development do
+  gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
+end
 
 # group :production do
 #   gem 'pg', '1.5.4'
