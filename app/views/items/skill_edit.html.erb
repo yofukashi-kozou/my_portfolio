@@ -50,7 +50,7 @@
           <%= form_with(model: p, url: skill_edit_user_path(created_at: @selected_day, selected_no: @no), method: :post, id: "update-form") do |form| %>
             <td><%= form.number_field :learning_time, min: 0, value: p.learning_time ,id: "learningTime"  , class: '' %></td>
             <td><button id='updateButton', update-button-id="<%= p.id %>" ><%= form.submit "学習時間を保存する", class: "learning-time-confirm update-btn"  %></button>
-            <%= form.number_field :learning_time, value: p.id, id:'item-id'%>
+
             </td>
 
             <div id="update-modal" class="modal">
