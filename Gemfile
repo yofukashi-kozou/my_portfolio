@@ -47,9 +47,9 @@ end
 #   gem 'pg', '1.5.4'
 # end
 
-group :production do
-  gem 'pg', '1.5.4'
-end
+# group :production do
+#   gem 'pg', '1.5.4'
+# end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
 #gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
