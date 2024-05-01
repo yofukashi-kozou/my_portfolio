@@ -24,12 +24,12 @@
       </div>
       <div class="add-img-box">
         <label>学習時間</label>
-        <%= form.number_field :learning_time, min: 0, class: '',id:"itemLearningtime" %>
-
+        <%= form.number_field :learning_time,class: 'add-items-form', min: 0,id:"itemLearningtime" %>
         <%= form.hidden_field :categories_id, value: @category.id ,id: "categoryid" %>
         <%= form.hidden_field :user_id, value: @user.id ,id: "userId" %>
         <%= form.hidden_field :category_name, value: @category.name ,id: "categoryname" %>
         <%= form.hidden_field :created_at, value: @create  ,id: "createdat" %>
+        <label>分単位で入力してください。</label>
       </div>
       <div class="edit-confirm">
         <button id='addButton' add-button-id="<%= @user.id %>"><%= form.submit '追加する', class: "edit-confirm-button create-btn", id:"input-rule" %></button>
@@ -39,7 +39,7 @@
       <div id='add-modal' class='modal' >
       <div class="modal-content">
       <div id="addItemIdArea"></div> 
-      <p id="addedItemName"></p>
+
 
   
         <div class="modal-buttons">
