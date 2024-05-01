@@ -5,14 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.create!(
-  name:  "Test User",
-  email: "testuser@yahoo.co.jp",
-  password:              "password",
-  password_confirmation: "password",
-  img_path: "default.img",
-  introduction: "testtesttesttesttesttesttesttesttesttesttest"
-)
+
+# User.create!(
+#   name:  "Test User",
+#   email: "testuser1@yahoo.co.jp",
+#   password:              "password1",
+#   password_confirmation: "password1",
+#   img_path: "default.img",
+#   introduction: "testtesttesttesttesttesttesttesttesttesttest"
+# )
 
 Category.create!(name: 'バックエンド')   
 Category.create!(name: 'フロントエンド')  

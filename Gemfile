@@ -19,17 +19,14 @@ gem 'sass-rails', '>= 3.2'
 gem 'turbolinks', '~> 5.2'
 gem 'webpacker', '~> 5.4.4'
 gem 'rails-i18n'
+gem 'pg', '1.5.4'
 
   
-
-
-group :development, :test do
-  gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
-end
 
 group :development do
   gem "web-console", "4.2.0"
   gem "solargraph",  "0.48.0"
+
 end
 
 group :test do
@@ -41,15 +38,16 @@ group :test do
   gem "minitest-reporters",       "1.6.0"
   gem "guard",                    "2.18.0"
   gem "guard-minitest",           "2.4.6"
+
 end
 
-group :development, :test do
-  gem 'pg', '1.5.4'
-end
+# group :development do
+#   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
+# end
 
-group :production do
-  gem 'pg', '1.5.4'
-end
+# group :production do
+#   gem 'pg', '1.5.4'
+# end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
 #gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
