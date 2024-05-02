@@ -12,17 +12,17 @@ class UsersController < ApplicationController
     @two_months_ago_day =Date.today.months_since(-2)
 
     # @item = item.find(params[user_id: user_id])
-    @buckend_thismonth_sum = Item.where(user_id: params[:id], categories_id: 1,created_at: @today.in_time_zone.all_month).sum(:learning_time)
-    @buckend_lastmonth_sum = Item.where(user_id: params[:id], categories_id: 1,created_at: @last_month_day.in_time_zone.all_month).sum(:learning_time)
-    @buckend_two_months_ago_sum = Item.where(user_id: params[:id], categories_id: 1,created_at:  @two_months_ago_day.in_time_zone.all_month).sum(:learning_time)
+    @buckend_thismonth_sum = Item.where(user_id: @id, categories_id: 1,created_at: @today.in_time_zone.all_month).sum(:learning_time)
+    @buckend_lastmonth_sum = Item.where(user_id: @id, categories_id: 1,created_at: @last_month_day.in_time_zone.all_month).sum(:learning_time)
+    @buckend_two_months_ago_sum = Item.where(user_id: @id, categories_id: 1,created_at:  @two_months_ago_day.in_time_zone.all_month).sum(:learning_time)
 
-    @frontend_thismonth_sum = Item.where(user_id: params[:id], categories_id: 2,created_at: @today.in_time_zone.all_month).sum(:learning_time)
-    @frontend_lastmonth_sum = Item.where(user_id: params[:id], categories_id: 2,created_at: @last_month_day.in_time_zone.all_month).sum(:learning_time)
-    @frontend_two_months_ago_sum = Item.where(user_id: params[:id], categories_id: 2,created_at:  @two_months_ago_day .in_time_zone.all_month).sum(:learning_time)
+    @frontend_thismonth_sum = Item.where(user_id: @id, categories_id: 2,created_at: @today.in_time_zone.all_month).sum(:learning_time)
+    @frontend_lastmonth_sum = Item.where(user_id: @id, categories_id: 2,created_at: @last_month_day.in_time_zone.all_month).sum(:learning_time)
+    @frontend_two_months_ago_sum = Item.where(user_id: @id, categories_id: 2,created_at:  @two_months_ago_day .in_time_zone.all_month).sum(:learning_time)
 
-    @infra_thismonth_sum = Item.where(user_id: params[:id], categories_id: 3,created_at: @today.in_time_zone.all_month).sum(:learning_time)
-    @infra_lastmonth_sum = Item.where(user_id: params[:id], categories_id: 3,created_at: @last_month_day.in_time_zone.all_month).sum(:learning_time)
-    @infra_two_months_ago_sum = Item.where(user_id: params[:id], categories_id: 3,created_at:  @two_months_ago_day .in_time_zone.all_month).sum(:learning_time)
+    @infra_thismonth_sum = Item.where(user_id: @id, categories_id: 3,created_at: @today.in_time_zone.all_month).sum(:learning_time)
+    @infra_lastmonth_sum = Item.where(user_id: @id, categories_id: 3,created_at: @last_month_day.in_time_zone.all_month).sum(:learning_time)
+    @infra_two_months_ago_sum = Item.where(user_id: @id, categories_id: 3,created_at:  @two_months_ago_day .in_time_zone.all_month).sum(:learning_time)
 
     # categories_id: 1,created_at:  @selected_day.in_time_zone.all_month
     # created_at:  @selected_day.in_time_zone.all_month)

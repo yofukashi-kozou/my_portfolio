@@ -170,6 +170,7 @@ body{
     font-size: 18px;
     font-style: normal;
     margin-bottom: 0;
+    padding-top: 8px;
   }
   
   .footer_logo{
@@ -467,7 +468,7 @@ body{
   }
   
   .pull-down-bottun{
-    width:960px;
+    width:880px;
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -478,6 +479,7 @@ body{
     display: inline-flex;
     align-items: center;
     position: relative;
+
   }
   
   .selectbox-3::after {
@@ -493,14 +495,14 @@ body{
   
   .selectbox-3 select {
     appearance: none;
-    min-width: 30px;
-    height: 2.8em;
-    padding: .4em calc(.8em + 30px) .4em .8em;
+    height:94px;
+    height: 44px;
+    padding: .2em calc(.7em + 30px) .2em .6em;
     border: 1px solid #d0d0d0;
     border-radius: 3px;
     background-color: #fff;
     color: #333333;
-    font-size: 1em;
+    font-size: 24px;
     cursor: pointer;
   }
   
@@ -542,6 +544,7 @@ body{
   
   .category-box td{
     width: 200px;
+    font-size:14px;
     padding: 16px 40px 16px 16px;
     flex-direction: column;
     justify-content: center;
@@ -753,7 +756,7 @@ body{
   }
   
   tbody {
-    max-height:276px;
+    max-height:258px;
     }
   
   
